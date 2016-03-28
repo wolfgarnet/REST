@@ -125,7 +125,7 @@ func (rh *RestHandler) ServeHTTP(rsp http.ResponseWriter, request *http.Request)
 	if runner != nil {
 		r, err := runner.Run(context)
 		if err != nil {
-			r = makeErrorResponse(err.Error())
+			r = MakeErrorResponse(err.Error())
 		}
 
 		logger.Debug("Runner: %v", r)

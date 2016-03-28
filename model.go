@@ -1,5 +1,14 @@
 package REST
 
+
+type Metadata struct {
+	Id string `json:"id"`
+	Title string `json:"title"`
+	Type string `json:"type"`
+	Info map[string]interface{} `json:"info"`
+	ParentNode Node
+}
+
 type Extension interface {
 	GetName() string
 }
@@ -12,6 +21,7 @@ type Node interface {
 	Identifier() string
 	UrlName() string
 	Parent() Node
+	GetMetadata() *Metadata
 }
 
 type Savable interface  {

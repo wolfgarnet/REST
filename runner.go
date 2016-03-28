@@ -84,7 +84,7 @@ func (runner *AutonomousRunner) Run(context *Context) (response.Response, error)
 
 /// ERROR
 
-func makeErrorResponse(error string) response.Response {
+func MakeErrorResponse(error string) response.Response {
 	b := response.NewBufferedResponse()
 
 	b.Status = 500
