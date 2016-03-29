@@ -2,10 +2,8 @@ package REST
 
 import (
 	"web/core/response"
-	"github.com/wolfgarnet/templates"
 	"strings"
 )
-
 
 type UrlMethod func(context *Context) (response.Response, error)
 
@@ -40,22 +38,6 @@ type Redirect struct  {
 
 func (runner *Redirect) Run(context *Context) (response.Response, error) {
 	return response.NewRedirectResponse(runner.Url), nil
-}
-
-// TEMPLATE
-
-type Template struct {
-	Renderer *templates.Renderer
-}
-
-func (runner *Template) Run(context *Context) (response.Response, error) {
-	r := response.NewBufferedResponse()
-	context.Request.ParseForm()
-
-	runner.Renderer.AddData("system", context.System)
-	runner.Renderer.AddData("context", context)
-	err := runner.Renderer.Render(r.Bytes)
-	return r, err
 }
 
 // METHOD
